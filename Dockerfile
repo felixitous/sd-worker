@@ -30,7 +30,7 @@ RUN apk add --no-cache wget && \
 # ---------------------------------------------------------------------------- #
 FROM python:3.10.9-slim as build_final_image
 
-ARG SHA=5ef669de080814067961f28357256e8fe27544f4
+ARG SHA=cf2772fab0af5573da775e7437e6acdca424f26e
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PIP_PREFER_BINARY=1 \
