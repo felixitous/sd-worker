@@ -76,6 +76,10 @@ RUN mkdir -p ${ROOT}/models/insightface && \
     cd ${ROOT}/models/insightface && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx
 
+# install additional pytorch models for sd-webui-controlnet
+RUN mkdir -p ${ROOT}/extensions/sd-webui-controlnet/annotator/downloads/clip_vision && \
+    wget -q -O ${ROOT}/extensions/sd-webui-controlnet/annotator/downloads/clip_vision/clip_h.pth https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/pytorch_model.bin
+
 # Install Python dependencies (Worker Template)
 COPY builder/requirements.txt /requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip \
