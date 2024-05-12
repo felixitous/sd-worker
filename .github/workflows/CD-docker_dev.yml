@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Clear Space
         run: |
+          df -h
           rm -rf /usr/share/dotnet
           rm -rf /opt/ghc
           rm -rf "/usr/local/share/boost"
