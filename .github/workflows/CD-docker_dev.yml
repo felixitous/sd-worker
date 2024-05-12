@@ -11,15 +11,25 @@ jobs:
     steps:
       - name: Clear Space
         run: |
-          df -h
           rm -rf /usr/share/dotnet
           rm -rf /opt/ghc
           rm -rf "/usr/local/share/boost"
           rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Maximize Disk space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-codeql: "true"
+
       - name: Clear More Space
         run: |
           docker rmi $(docker image ls -aq)
+          df -h
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
